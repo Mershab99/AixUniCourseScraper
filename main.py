@@ -1,20 +1,7 @@
-#import requests
-from bs4 import BeautifulSoup
-#from requests.exceptions import ConnectionError
 from os import environ as env
-#from dotenv import load_dotenv
 import time
 from webcrawler import login, get_course_snapshot
-
-#load_dotenv()
-
-# url = "https://ident.univ-amu.fr/cas/login"
-
-# try:
-#    response = requests.get(url)
-#    web_content = BeautifulSoup(response.text, "lxml")
-# except:
-#    pass
+from discord import send_message
 
 first = True
 
@@ -27,8 +14,16 @@ if __name__ == '__main__':
     while True:
         if driver:
             driver.refresh()
+            prev_content = content
             new_content = driver.page_source
-            if content is not new_content:
+            if not first and content == new_content:
                 content = new_content
                 print('UPDATE DISCORD NOTIFICATION')
+                send_message('<@758424249832046612> A new change has been made to the course website, '
+                                                                 'check it out here: '
+                                                                 'https://pagesinterscol.univ-amu.fr/prod/acc_ip.php')
+            if first:
+                send_message('<@758424249832046612> The course crawler bot is now active')
+                first = False
+
             time.sleep(10)

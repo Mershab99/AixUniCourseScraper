@@ -54,7 +54,7 @@ def get_course_snapshot(driver):
         driver.find_element(By.XPATH,
                             '/html/body/div[1]/div[4]/form/dl/dd/dl/dd[2]/dl/dd/dl/dd[1]/dl/dd/dl/dt[1]/input').click()
 
-        #Next step
+        # Next step
         driver.find_element(By.XPATH,
                             '/html/body/div[1]/div[4]/form/dl/dd/dl/dd[2]/dl/dd/dl/dd[1]/dl/dd/dl/dt[1]/span/span/a/img').click()
 

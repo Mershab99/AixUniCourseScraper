@@ -21,6 +21,7 @@ services:
     container_name: webcrawler
     build: .
     command: python main.py
+    restart: always
     #  volumes:
     #  - /c/Users/***/Desktop/test:/data/.
     links:

@@ -1,4 +1,4 @@
 requests
 selenium~=4.4.3
-
 beautifulsoup4~=4.11.1
+discord-webhook
