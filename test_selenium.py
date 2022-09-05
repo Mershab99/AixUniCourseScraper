@@ -11,7 +11,7 @@ try:
 
     time.sleep(10)
     driver.get("www.google.ca")
-    print(driver.title)
+    print("******************* TEST SUCCESSFUL *********************")
     driver.close()
 except:
     driver.close()

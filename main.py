@@ -1,29 +1,24 @@
-import requests
-from bs4 import BeautifulSoup
-from requests.exceptions import ConnectionError
+#import requests
+#from bs4 import BeautifulSoup
+#from requests.exceptions import ConnectionError
+from os import environ as env
+#from dotenv import load_dotenv
+import time
+from webcrawler import login, get_course_snapshot
+
+#load_dotenv()
+
+# url = "https://ident.univ-amu.fr/cas/login"
+
+# try:
+#    response = requests.get(url)
+#    web_content = BeautifulSoup(response.text, "lxml")
+# except:
+#    pass
 
 
-url = "https://ident.univ-amu.fr/cas/login"
-
-try:
-    response = requests.get(url)
-    web_content = BeautifulSoup(response.text, "lxml")
-except:
-    pass
-
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    time.sleep(5)
+    driver = login(env.get('USER'), env.get('PASS'))
+    if driver:
+        get_course_snapshot(driver)

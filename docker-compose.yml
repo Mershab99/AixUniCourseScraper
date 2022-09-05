@@ -1,23 +1,31 @@
 version: "3"
 services:
   chromedriver:
-      container_name: chromedriver
-      image: selenium/standalone-chrome
-      #network_mode: host
-      ports:
-        - "4444:4444"
-  test_webdriver:
-      build: .
-      command: python test_selenium.py
-      #volumes:
-      #  - /c/Users/***/Desktop/test:/data/.
-      links:
-        - chromedriver
-  #webcrawler:
-  # build: .
-  #  command: python main.py
-  #  volumes:
-    #  - /c/Users/***/Desktop/test:/data/.
+    container_name: chromedriver
+    image: selenium/standalone-chrome
+    #network_mode: host
+    ports:
+    - "4444:4444"
+    - "5900:5900"
+    - "7900:7900"
+  #webdriver_test:
+  #  container_name: webdriver_test
+  #  build: .
+  #  command: python test_selenium.py
+  #  #volumes:
+  #  #  - /c/Users/***/Desktop/test:/data/.
   #  links:
-  #    - chromedriver
-  #    - test_webdriver
+  #  - chromedriver
+
+  webcrawler:
+    container_name: webcrawler
+    build: .
+    command: python main.py
+    #  volumes:
+    #  - /c/Users/***/Desktop/test:/data/.
+    links:
+    - chromedriver
+    #depends_on:
+    #- webdriver_test
+    env_file:
+      - .env
