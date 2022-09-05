@@ -39,5 +39,31 @@ def get_course_snapshot(driver):
         time.sleep(1)
         driver.find_element(By.XPATH, '/html/body/div[1]/div/div[2]/div[2]/div[1]/form[2]/input').click()
         print("*** WE IN BOYS ***")
-    except NoSuchElementException:
-        return None
+
+        # Continue 1
+        driver.find_element(By.XPATH, '/html/body/div[1]/div[4]/p/input').click()
+
+        # Continue 2
+        driver.find_element(By.XPATH, '/html/body/div[1]/div[4]/p[2]/input').click()
+
+        driver.find_element(By.XPATH,
+                            '/html/body/div[1]/div[4]/form/dl/dd/dl/dd[2]/dl/dd/dl/dt[2]/span/span/a/img').click()
+
+        driver.find_element(By.XPATH, '/html/body/div[1]/div[4]/form/dl/dd/dl/dd[2]/dl/dd/dl/dt[2]/input').click()
+
+        driver.find_element(By.XPATH,
+                            '/html/body/div[1]/div[4]/form/dl/dd/dl/dd[2]/dl/dd/dl/dd[1]/dl/dd/dl/dt[1]/input').click()
+
+        #Next step
+        driver.find_element(By.XPATH,
+                            '/html/body/div[1]/div[4]/form/dl/dd/dl/dd[2]/dl/dd/dl/dd[1]/dl/dd/dl/dt[1]/span/span/a/img').click()
+
+        driver.find_element(By.XPATH,
+                            '/html/body/div[1]/div[4]/form/dl/dd/dl/dd[2]/dl/dd/dl/dd[1]/dl/dd/dl/dd[1]/dl/dd/dl/dt[3]/input').click()
+
+        # Continue 3
+        driver.find_element(By.XPATH, '/html/body/div[1]/div[4]/p/input').click()
+        return driver
+
+    except NoSuchElementException as e:
+        return print(e)

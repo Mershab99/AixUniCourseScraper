@@ -1,5 +1,5 @@
 #import requests
-#from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 #from requests.exceptions import ConnectionError
 from os import environ as env
 #from dotenv import load_dotenv
@@ -16,9 +16,19 @@ from webcrawler import login, get_course_snapshot
 # except:
 #    pass
 
+first = True
 
+content = ""
 if __name__ == '__main__':
     time.sleep(5)
     driver = login(env.get('USER'), env.get('PASS'))
-    if driver:
-        get_course_snapshot(driver)
+    driver = get_course_snapshot(driver)
+
+    while True:
+        if driver:
+            driver.refresh()
+            new_content = driver.page_source
+            if content is not new_content:
+                content = new_content
+                print('UPDATE DISCORD NOTIFICATION')
+            time.sleep(10)
