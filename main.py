@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from requests.exceptions import ConnectionError
 
 
-url = ""
+url = "https://ident.univ-amu.fr/cas/login"
 
 try:
     response = requests.get(url)

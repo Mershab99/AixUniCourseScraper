@@ -1,0 +1,23 @@
+version: "3"
+services:
+  chromedriver:
+      container_name: chromedriver
+      image: selenium/standalone-chrome
+      #network_mode: host
+      ports:
+        - "4444:4444"
+  test_webdriver:
+      build: .
+      command: python test_selenium.py
+      #volumes:
+      #  - /c/Users/***/Desktop/test:/data/.
+      links:
+        - chromedriver
+  #webcrawler:
+  # build: .
+  #  command: python main.py
+  #  volumes:
+    #  - /c/Users/***/Desktop/test:/data/.
+  #  links:
+  #    - chromedriver
+  #    - test_webdriver
