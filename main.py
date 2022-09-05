@@ -16,7 +16,7 @@ if __name__ == '__main__':
             driver.refresh()
             prev_content = content
             new_content = driver.page_source
-            if not first and content == new_content:
+            if not first and content != new_content:
                 content = new_content
                 print('UPDATE DISCORD NOTIFICATION')
                 send_message('<@758424249832046612> A new change has been made to the course website, '
